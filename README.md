@@ -34,11 +34,4 @@ This project is a salon management system designed to streamline salon operation
 1. Sign in as an admin/staff member to manage appointments, customers, staff, and inventory.
 2. Sign in as a customer to schedule appointments and view appointment history.
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-For inquiries or support, please contact [MuhammedJamzeeth](mailto:mrjamzee002@gmail.com).
