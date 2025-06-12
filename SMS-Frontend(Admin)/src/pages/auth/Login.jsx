@@ -45,7 +45,7 @@ const Login = () => {
         <Banners banners={bannerdata} />
       </BannerContainer>
       <FormContainer>
-        <Logo style={{ margin: 10 }} height={150} width={150}>
+        <Logo style={{ margin: 10 }} height={150} width={400}>
           <img src={SaloonLogo} alt="logo" />
         </Logo>
         <h3>Welcome to {commonNames.SALOON_NAME}</h3>
