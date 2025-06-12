@@ -3,10 +3,13 @@ import { colors } from "../../styles/colors";
 
 export const Container = styled.div`
   display: flex;
-  /* margin: 0 10px; */
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  height: 100vh;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  overflow: hidden; /* Prevent scrollbars */
 `;
 
 export const Logo = styled.div`
@@ -22,61 +25,40 @@ export const Logo = styled.div`
   @media screen and (max-width: 450px) {
     width: 100px;
     height: 100px;
-    /* margin: 0px; */
   }
 `;
 
 export const Form = styled.form`
   display: grid;
-  /* grid-template-columns: 1fr 1fr; */
   gap: 10px;
   width: 100%;
 
   @media screen and (max-width: 450px) {
     grid-template-columns: 1fr;
   }
-
-  /* .MuiFormControl-root {
-    margin: 0px !important;
-  }
-
-  .MuiAutocomplete-root .MuiFormControl-root .MuiInputBase-root {
-    height: 40px;
-  }
-
-  .MuiAutocomplete-root .MuiFormControl-root .MuiInputBase-input {
-    top: -3px !important;
-    left: 100px !important;
-    font-size: 15px;
-  } */
 `;
 
 export const BannerContainer = styled.div`
-  width: 50%;
-  height: 100%;
-  background-color: red;
+  width: 50%; /* Adjust width as needed */
+  height: 100%; /* Full height */
   display: flex;
-  padding: 0px 40px;
   align-items: center;
   justify-content: center;
   background: ${colors.colorBlack};
-  flex: 0.6;
+  flex: 1; /* Allow it to grow */
   @media screen and (max-width: 850px) {
-    display: none;
-    flex: 0;
+    display: none; /* Hide on smaller screens */
   }
 `;
 
 export const FormContainer = styled.div`
-  margin: 20px 0;
-  padding: 0 40px;
-  flex: 0.4;
+  width: 50%; /* Adjust width as needed */
+  height: 100%; /* Full height */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  padding: 20px;
 
   h3 {
     font-size: 20px;
@@ -85,14 +67,15 @@ export const FormContainer = styled.div`
     color: ${colors.colorBlack};
     margin: 10px;
   }
+
   @media screen and (max-width: 850px) {
-    flex: 1;
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Adjust height */
     max-width: 500px;
     margin: auto;
   }
 
   @media screen and (max-width: 450px) {
-    /* justify-content: flex-start; */
     height: 100vh;
     padding: 0 20px;
 

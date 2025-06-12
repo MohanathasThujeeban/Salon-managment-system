@@ -23,7 +23,7 @@ const BannerContainer = styled.div`
 `;
 const Image = styled.div`
   width: 100%;
-  height: 450px;
+  height: 800px;
 
   border-radius: 10px;
   background-position: center; /* Center the image */

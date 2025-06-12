@@ -33,7 +33,7 @@ const AddComp = ({ setIsOpen, isOpen }) => {
   const top100Films = [
     "The Shawshank Redemption",
     "The Godfather",
-    // ... other film titles ...
+    // Add more film titles or replace with actual service specialties
   ];
 
   const [service_special, setServiceSpecial] = React.useState([...top100Films]);
@@ -55,16 +55,17 @@ const AddComp = ({ setIsOpen, isOpen }) => {
     }
   );
 
+  // Generate image URLs for preview
   useEffect(() => {
     if (images.length < 1) return;
-    const newImageUrls = [];
-    images.forEach((image) => newImageUrls.push(URL.createObjectURL(image)));
+    const newImageUrls = images.map((image) => URL.createObjectURL(image));
     setImageURLs(newImageUrls);
   }, [images]);
 
   return (
     <React.Fragment>
       <AddServiceContainer onSubmit={addNewStaff}>
+        {/* Image Upload Section */}
         <ServiceImages>
           <ImageUplod
             handleFileChange={handleFileChange}
@@ -85,7 +86,6 @@ const AddComp = ({ setIsOpen, isOpen }) => {
                     justifyContent: "center",
                     fontSize: "20px",
                     opacity: 0.9,
-
                     borderRadius: "5px",
                     background: `${colors.colorBlack}`,
                     color: `${colors.colorWhite}`,
@@ -96,18 +96,19 @@ const AddComp = ({ setIsOpen, isOpen }) => {
               </React.Fragment>
             ) : (
               imageURLS.map((item, index) => (
-                <img key={index} src={item} alt="" />
+                <img key={index} src={item} alt="Uploaded Image" />
               ))
             )}
           </UploadedImages>
         </ServiceImages>
+
+        {/* Form Fields */}
         <FormFields>
           <TextField
             fullWidth
             name="name"
             size="medium"
             label="Stylist Name"
-            id="outlined-basic"
             variant="outlined"
             value={formInput.name}
             onChange={handleInput}
@@ -118,35 +119,30 @@ const AddComp = ({ setIsOpen, isOpen }) => {
             margin="dense"
             size="medium"
             label="Email"
-            id="outlined-basic"
             variant="outlined"
             value={formInput.email}
             onChange={handleInput}
           />
           <FormInputWrapper>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Work Type</InputLabel>
+              <InputLabel id="work-type-label">Work Type</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
+                labelId="work-type-label"
                 size="medium"
-                id="demo-simple-select"
                 value={formInput.working_time}
                 name="working_time"
-                label="Gender"
                 onChange={handleInput}
               >
-                <MenuItem value={"Part Time"}>Part Time</MenuItem>
-                <MenuItem value={"Full Time"}>Full Time</MenuItem>
+                <MenuItem value="Part Time">Part Time</MenuItem>
+                <MenuItem value="Full Time">Full Time</MenuItem>
               </Select>
             </FormControl>
             <TextField
               fullWidth
-              // margin="dense"
               type="number"
               size="medium"
               name="experience"
-              label="Experience"
-              id="outlined-basic"
+              label="Experience (Years)"
               variant="outlined"
               value={formInput.experience}
               onChange={handleInput}
@@ -154,7 +150,7 @@ const AddComp = ({ setIsOpen, isOpen }) => {
           </FormInputWrapper>
 
           <Autocomplete
-            id="array-autocomplete"
+            id="service-specialties"
             multiple
             sx={{ width: "100%" }}
             value={service_special}
@@ -162,15 +158,16 @@ const AddComp = ({ setIsOpen, isOpen }) => {
             options={top100Films}
             getOptionLabel={(option) => option}
             renderInput={(params) => (
-              <TextField {...params} label="Select a film" placeholder="Film" />
+              <TextField {...params} label="Service Specialties" placeholder="Specialty" />
             )}
           />
 
           <TextareaAutosize
-            aria-label="empty textarea"
+            aria-label="About Stylist"
             value={formInput.about}
             name="about"
             onChange={handleInput}
+            placeholder="About Stylist"
             style={{
               width: "100%",
               height: "150px",
@@ -182,13 +179,14 @@ const AddComp = ({ setIsOpen, isOpen }) => {
               margin: "10px 0",
             }}
           />
+
+          {/* Submit Button */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             style={{
               background: "#101727",
-              // margin: "10px 0",
               borderRadius: "25px",
               height: "40px",
               padding: "10px",
@@ -198,9 +196,7 @@ const AddComp = ({ setIsOpen, isOpen }) => {
             }}
           >
             {!loading ? (
-              <React.Fragment>
-                <span style={{ marginLeft: "5px" }}>AddStaff</span>
-              </React.Fragment>
+              <span>Add Staff</span>
             ) : (
               <Lottie
                 size={30}
@@ -211,10 +207,12 @@ const AddComp = ({ setIsOpen, isOpen }) => {
           </Button>
         </FormFields>
       </AddServiceContainer>
+
+      {/* Error Messages */}
       <ErrorContiner>
         {errors.length > 0 &&
           errors.map((item, id) => (
-            <Alert key={id + 1} severity="error" sx={{ margin: "5px 0" }}>
+            <Alert key={id} severity="error" sx={{ margin: "5px 0" }}>
               {item.message}
             </Alert>
           ))}
@@ -225,9 +223,9 @@ const AddComp = ({ setIsOpen, isOpen }) => {
 
 export default AddComp;
 
+// Styled Components
 export const ErrorContiner = styled.div`
   position: fixed;
   bottom: 0px;
   left: 0px;
 `;
-

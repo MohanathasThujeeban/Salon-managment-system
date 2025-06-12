@@ -53,7 +53,7 @@ const Register = () => {
       </BannerContainer>
       <FormContainer>
         <h3>Get Started Now</h3>
-        <Logo style={{ margin: 10 }} height={150} width={150}>
+        <Logo style={{ margin: 10 }} height={150} width={400}>
           <img src={SaloonLogo} alt="logo" />
         </Logo>
         {error && (
